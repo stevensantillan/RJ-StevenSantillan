@@ -1,15 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/header/Navbar';
+import ItemListContainer from './components/cartComponents/ItemListContainer';
 
 function App() {
   return (
-    <><Navbar />
-    <section>
-      <h1>
-        Hola
-      </h1>
-    </section></>
+    <>
+    <Navbar />
+    <ItemListContainer/>
+    </> 
   );
 }
 

@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import CartWidget from "../cartComponents/CartWidget";
 
 const pages = ['Productos', 'Contacto'];
 const settings = ['Perfil', 'Dashboard', 'Logout'];
@@ -124,7 +125,7 @@ const Navbar = () => {
                   </Button>
                 ))}
               </Box>
-    
+              <CartWidget/>
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
