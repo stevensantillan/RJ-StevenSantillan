@@ -13,10 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Productos', 'Contacto'];
+const settings = ['Perfil', 'Dashboard', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
   
@@ -158,6 +158,6 @@ const ResponsiveAppBar = () => {
           </Container>
         </AppBar>
     )
-}  
+}
 
-export default ResponsiveAppBar
+export default Navbar

@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import ResponsiveAppBar from './components/header/header.jsx';
+import Navbar from './components/header/Navbar';
 
 function App() {
   return (
-    <ResponsiveAppBar/>
+    <><Navbar />
+    <section>
+      <h1>
+        Hola
+      </h1>
+    </section></>
   );
 }
 
