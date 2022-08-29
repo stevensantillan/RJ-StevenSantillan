@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({stock = "6"}) => {
 
     const [initial, setInitial ] = useState(1)
     const [AddToCart, setAddCart] = useState(true)
@@ -70,20 +70,20 @@ const ItemCount = ({stock}) => {
                 sx={{mr: 1, height: 30}}>-</Button>  
             <Box 
                 border={1} 
-                sx={{ width: '10%', height: 30, borderColor: 'secondary.main', pt:'1%', color: 'secondary.main'}} 
+                sx={{ width: '10%', height: 30, borderColor: 'secondary.main', color: 'secondary.main'}} 
                 style={{textAlign: "center"}}>
                     <span>{initial}</span> 
             </Box>
-        <Button 
-            onClick={handleOnAdd} 
-            variant="outlined" 
-            color="secondary" 
-            sx={{ml: 1, height: 30 }}>+</Button>
-        <Button 
-            onClick={handleAddToCart}
-            variant="contained" 
-            color="success" 
-            sx={{ml: 1, height: 30 }}>Add to Cart</Button>
+            <Button 
+                onClick={handleOnAdd} 
+                variant="outlined" 
+                color="secondary" 
+                sx={{ml: 1, height: 30 }}>+</Button>
+            <Button 
+                onClick={handleAddToCart}
+                variant="contained" 
+                color="success" 
+                sx={{ml: 1, height: 30 }}>Add to Cart</Button>
     </Box>
     </CardActions>
     </Card>
