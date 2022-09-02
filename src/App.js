@@ -1,16 +1,29 @@
 import './App.css';
 import Navbar from './components/header/Navbar';
-import ItemCount from './components/items/ItemCount';
 import ItemDetailContainer from './components/items/itemsDetails/ItemDetailContainer';
 import ItemListContainer from './components/items/ItemListContainer';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import Contacto from './components/Contacto';
+import Perfil from './components/Perfil';
 
 function App() {
   return (
+    
     <>
-    <Navbar />
-    <ItemDetailContainer/>
-    <ItemListContainer/>
+    <BrowserRouter>
+
+      <Navbar/>
+
+      <Routes>  
+        <Route path='/' element={<ItemListContainer/>}/>
+        <Route path='/contacto' element={<Contacto/>}/>
+        <Route path='/perfil' element={<Perfil/>}/>
+        <Route path='*' element={<Navigate to={'/'}/>}/>
+      </Routes>   
+
+    </BrowserRouter>
     </> 
+
   );
 }
 

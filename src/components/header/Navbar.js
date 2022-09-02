@@ -13,9 +13,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from "../cartComponents/CartWidget";
+import { Link } from "@mui/material";
 
-const pages = ['Productos', 'Contacto'];
-const settings = ['Perfil', 'Dashboard', 'Logout'];
+
+const pages = [<Link href="/contacto" color="inherit" underline="none">Contacto</Link>];
+const settings = [<Link href="/perfil" color="inherit" underline="none">Perfil</Link>, 
+                  'Dashboard', 
+                  'Logout'];
 
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -125,7 +129,9 @@ const Navbar = () => {
                   </Button>
                 ))}
               </Box>
+
               <CartWidget/>
+
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
