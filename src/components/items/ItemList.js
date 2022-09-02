@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Item from './Item';
 
-const ItemList = ({titulo = "Este será nuestro futuro catálogo", productos=[]}) => {
+const ItemList = ({titulo = "Catálogo", productos=[]}) => {
   return (
     <>
     <React.Fragment>

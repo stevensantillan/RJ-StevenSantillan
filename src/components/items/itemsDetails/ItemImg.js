@@ -7,14 +7,14 @@ import { CardActionArea } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-export default function ItemImg() {
+const ItemImg = ({img}) => {
   return (
-    <Card sx={{ maxWidth: "auto", height: "800" }}>
+    <Card sx={{ maxWidth: "auto", height: "800", ml:2 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="730"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={img}
           alt="example"
         />
         <CardContent sx={{flexDirection: "row"}}>
@@ -34,3 +34,5 @@ export default function ItemImg() {
     </Card>
   );
 }
+
+export default ItemImg
