@@ -33,15 +33,17 @@ const ItemDetailContainer = () => {
   },[])
 
   return (
-    <Box sx={{bgcolor: primary}}>
-      {
+    <>
+    {
       loading 
       ? <Stack sx={{ color: 'grey.500', mt: 30 }} spacing={2} direction="row" justifyContent="center">
           <CircularProgress color="secondary" size={170}/>
         </Stack>
-      : <ItemDetail item={item}/>
+      : <Box sx={{bgcolor: primary}}>
+          <ItemDetail item={item}/>
+        </Box>
       }
-    </Box> 
+    </>
   )
 }
 
