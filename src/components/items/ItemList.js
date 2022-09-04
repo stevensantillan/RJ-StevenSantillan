@@ -24,7 +24,7 @@ const ItemList = ({titulo = "Catálogo", productos=[]}) => {
                 }}
             >
 
-            {productos.map((prod) => <Item producto={prod} key={prod.id}/>)}
+            {productos.map((prod,index) => <Item producto={prod} key={index}/>)}
             
           </Box>
 
