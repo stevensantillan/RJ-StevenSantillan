@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import ItemDetailUnit from './ItemDetailUnit';
 
-const ItemDetail = ({productos=[]}) => {
+const ItemDetail = ({item}) => {
 
   return (
     <>
@@ -15,9 +15,7 @@ const ItemDetail = ({productos=[]}) => {
             spacing={1}
             columns={16}>
 
-        {productos
-            .filter(producto=> producto.id === 1)
-            .map((prod) => <ItemDetailUnit producto={prod} key={prod.id} />)}
+        {<ItemDetailUnit producto={item}/>}
 
         </Grid>
     </Box>              

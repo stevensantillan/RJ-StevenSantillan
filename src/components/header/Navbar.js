@@ -13,11 +13,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from "../cartComponents/CartWidget";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 
 
-const pages = [<Link href="/contacto" color="inherit" underline="none">Contacto</Link>];
-const settings = [<Link href="/perfil" color="inherit" underline="none">Perfil</Link>, 
+const pages = [ <Link to="/productos/futbol" color="inherit" underline="none">Futbol</Link>,
+                <Link to="/productos/running" color="inherit" underline="none">Running</Link>,
+                <Link to="/productos/urbanas" color="inherit" underline="none">Urbanas</Link>];
+const settings = [<Link to="/perfil" color="inherit" underline="none">Perfil</Link>, 
                   'Dashboard', 
                   'Logout'];
 

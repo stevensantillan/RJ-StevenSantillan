@@ -5,6 +5,7 @@ export const stock = [{
     detail: "lorem",
     stock: 6,
     img: "",
+    category: "futbol"
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ export const stock = [{
     detail: "lorem",
     stock: 6,
     img: "",
+    category: "futbol"
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ export const stock = [{
     detail: "lorem",
     stock: 6,
     img: "",
+    category: "running"
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ export const stock = [{
     detail: "lorem",
     stock: 6,
     img: "",
+    category: "running"
   },
   {
     id: 5,
@@ -37,6 +41,7 @@ export const stock = [{
     detail: "lorem",
     stock: 6,
     img: "",
+    category: "urbanas"
   },
   {
     id: 6,
@@ -45,5 +50,6 @@ export const stock = [{
     detail: "lorem",
     stock: 6,
     img: "",
+    category: "urbanas"
   },
   ]
