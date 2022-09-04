@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { pedirDatos } from '../../helpers/pedirDatos';
 import ItemList from './ItemList';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const ItemListContainer = () => {
@@ -34,7 +36,11 @@ const ItemListContainer = () => {
   return (
     <>
       {
-      loading ? <h2> Loading... </h2> : <ItemList productos={productos}/>
+      loading 
+      ? <Stack sx={{ color: 'grey.500', mt: 30 }} spacing={2} direction="row" justifyContent="center">
+          <CircularProgress color="secondary" size={170}/>
+        </Stack>
+      : <ItemList productos={productos}/>
       }
     </>
       )

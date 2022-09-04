@@ -4,6 +4,8 @@ import ItemDetail from './ItemDetail'
 import { grey } from '@mui/material/colors';
 import { pedirDatos } from '../../../helpers/pedirDatos';
 import { useParams } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const primary = grey[400];
 
@@ -33,7 +35,11 @@ const ItemDetailContainer = () => {
   return (
     <Box sx={{bgcolor: primary}}>
       {
-      loading ? <h2> Loading... </h2> : <ItemDetail item={item}/>
+      loading 
+      ? <Stack sx={{ color: 'grey.500', mt: 30 }} spacing={2} direction="row" justifyContent="center">
+          <CircularProgress color="secondary" size={170}/>
+        </Stack>
+      : <ItemDetail item={item}/>
       }
     </Box> 
   )

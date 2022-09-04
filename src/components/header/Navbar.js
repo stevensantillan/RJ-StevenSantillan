@@ -14,12 +14,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from "../cartComponents/CartWidget";
 import { Link } from "react-router-dom";
+import "./navbar.scss"
 
 
-const pages = [ <Link to="/productos/futbol" color="inherit" underline="none">Futbol</Link>,
-                <Link to="/productos/running" color="inherit" underline="none">Running</Link>,
-                <Link to="/productos/urbanas" color="inherit" underline="none">Urbanas</Link>];
-const settings = [<Link to="/perfil" color="inherit" underline="none">Perfil</Link>, 
+const pages = [ <Link to="/productos/futbol" className="links">Futbol</Link>,
+                <Link to="/productos/running" className="links">Running</Link>,
+                <Link to="/productos/urbanas" className="links">Urbanas</Link>];
+const settings = [<Link to="/perfil" className="links">Perfil</Link>, 
                   'Dashboard', 
                   'Logout'];
 
