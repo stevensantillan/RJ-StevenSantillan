@@ -13,15 +13,15 @@ const Item = ({producto}) => {
             <CardMedia
               component="img"
               height="160"
-              image={producto.img}
+              image={`${producto.thumbnail.path}.${producto.thumbnail.extension}`}
               alt="img prod"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {producto.nameProd}
+                {producto.title}
               </Typography>
               <Typography gutterBottom variant="h6" component="div">
-                Precio: ${producto.price}
+                Precio: ${producto.prices}
               </Typography>
               <Typography gutterBottom variant="h6" component="div">
                 Stock disponible: {producto.stock}

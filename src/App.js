@@ -4,6 +4,7 @@ import ItemDetailContainer from './components/items/itemsDetails/ItemDetailConta
 import ItemListContainer from './components/items/ItemListContainer';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Perfil from './components/Perfil';
+import MarvelPrueba from './MarvelPrueba';
 
 
 function App() {
@@ -12,20 +13,38 @@ function App() {
     <>
     <BrowserRouter>
 
-      <Navbar/>
+<Navbar/>
 
-      <Routes>  
-        <Route path='/' element={<ItemListContainer/>}/>
-        <Route path='/productos/:category' element={<ItemListContainer/>}/>
-        <Route path='/item/:itemId' element={<ItemDetailContainer/>}/>
-        <Route path='/perfil' element={<Perfil/>}/>
-        <Route path='*' element={<Navigate to={'/'}/>}/>
-      </Routes>   
+<Routes>  
+  <Route path='/' element={<ItemListContainer/>}/>
+  <Route path='/productos/:category' element={<ItemListContainer/>}/>
+  <Route path='/item/:itemId' element={<ItemDetailContainer/>}/>
+  <Route path='/perfil' element={<Perfil/>}/>
+  <Route path='*' element={<Navigate to={'/'}/>}/>
+</Routes>   
 
-    </BrowserRouter>
+//</BrowserRouter>
     </> 
 
   );
 }
 
 export default App;
+
+
+//<BrowserRouter>
+
+//<Navbar/>
+
+//<Routes>  
+//  <Route path='/' element={<ItemListContainer/>}/>
+//  <Route path='/productos/:category' element={<ItemListContainer/>}/>
+//  <Route path='/item/:itemId' element={<ItemDetailContainer/>}/>
+//  <Route path='/perfil' element={<Perfil/>}/>
+//  <Route path='*' element={<Navigate to={'/'}/>}/>
+//</Routes>   
+
+//</BrowserRouter>
+
+
+//<MarvelPrueba/>
