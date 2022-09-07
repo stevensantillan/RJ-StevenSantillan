@@ -11,16 +11,17 @@ const ItemList = ({titulo = "Catálogo", productos=[]}) => {
       <CssBaseline />
       <Container maxWidth="false">
         <Box 
-          sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
+          sx={{ bgcolor: 'none' }}>
 
-            <h1 style={{textAlign: "center"}}>{titulo}</h1>  
+            <h1 style={{textAlign: "center", color: '#ffffff'}}>{titulo}</h1>  
 
           <Box 
-            sx={{ bgcolor: '#cfe8fc', 
-                  display: 'grid', 
+            sx={{ bgcolor: '#000000cd', 
+                  display: 'grid',
+                  justifyItems: 'stretch', 
                   gridTemplateColumns: 'repeat(3, 1fr)', 
-                  gridTemplateRows: 'repeat(3, 1fr)',
-                  gap:2
+                  gridTemplateRows: 'repeat(2, 1fr)',
+                  gap:1
                 }}
             >
 

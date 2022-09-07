@@ -11,9 +11,9 @@ import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 
 const ItemCardPays = () => {
   return (
-    <Card sx={{ maxWidth: "auto", m:4 }}>
+    <Card sx={{ maxWidth: "auto", height: 220, m:4 }}>
         <CardContent>
-            <Typography sx={{ fontSize: 17 }} color="text.secondary" gutterBottom>
+            <Typography sx={{ fontSize: 15 }} color="text.secondary" gutterBottom>
                 Formas de pago
             </Typography>
             <Typography sx={{ mt: 3, mb: 3, pl:2}}>
@@ -21,7 +21,7 @@ const ItemCardPays = () => {
                 <AccountBalanceIcon sx={{ ml: 2, mr:2}}/>
                 <MonetizationOnIcon sx={{ ml: 2, mr:2}}/>
             </Typography>
-            <Typography sx={{ fontSize: 17 }} color="text.secondary" gutterBottom>
+            <Typography sx={{ fontSize: 15 }} color="text.secondary" gutterBottom>
                 Envios 
             </Typography>
             <Typography sx={{ mt:3, mb:3, pl:2 }}>

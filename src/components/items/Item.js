@@ -8,26 +8,17 @@ import { Link } from 'react-router-dom';
 
 const Item = ({producto}) => {
     return (
-        <Card>
-          <CardActionArea>
+        <Card style={{background: "#e1b7edf2"}}>
+          <CardActionArea style={{background: "#e1b7edf2"}}>
             <CardMedia
               component="img"
-              height="160"
-              image={`${producto.thumbnail.path}.${producto.thumbnail.extension}`}
+              height="400"
+              image={producto.img}
               alt="img prod"
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {producto.title}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                Precio: ${producto.prices}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                Stock disponible: {producto.stock}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {producto.detail}
+            <CardContent style={{background: "#c869f4f2"}}>
+              <Typography gutterBottom variant="h5" component="div" fontSize="28px">
+                {producto.nameProd}
               </Typography>
             </CardContent>
           </CardActionArea>

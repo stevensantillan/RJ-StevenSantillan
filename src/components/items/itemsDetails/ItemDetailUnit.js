@@ -80,7 +80,7 @@ return (
                             variant="body2" 
                             color="text.secondary"
                             textAlign="center"
-                            sx={{mt:3, fontSize: 23}}>
+                            sx={{mt:3, fontSize: 16}}>
                                 {producto.detail}
                         <Typography variant="h2" component="div" color="text.primary" sx={{mt:4, ml:2, fontSize: 50}}>
                                 ${producto.price}

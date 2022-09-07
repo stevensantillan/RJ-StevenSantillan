@@ -15,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from "../cartComponents/CartWidget";
 import { Link } from "react-router-dom";
 import "./navbar.scss"
+import logoHeader from "../../data/multi/logo.ico"
 
 
 const pages = [ <Link to="/productos/futbol" className="links">Futbol</Link>,
@@ -45,9 +46,9 @@ const Navbar = () => {
 
     return (
         <AppBar position="static">
-          <Container maxWidth="xl">
+          <Container maxWidth="xl" className="appBar">
             <Toolbar disableGutters>
-              <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+              <img src={logoHeader} className="logoEdit"/>
               <Typography
                 variant="h6"
                 noWrap
@@ -63,7 +64,7 @@ const Navbar = () => {
                   textDecoration: 'none',
                 }}
               >
-                LOGO
+                Nike Store
               </Typography>
     
               <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
