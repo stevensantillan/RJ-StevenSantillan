@@ -15,8 +15,17 @@ import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from "../cartComponents/CartWidget";
 import { Link } from "react-router-dom";
 import "./navbar.scss"
-import logoHeader from "../../data/multi/logo.ico"
+import logoHeader from "../../data/multi/logoalt.ico"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#212121',
+    },
+  },
+});
 
 const pages = [ <Link to="/productos/futbol" className="links">Futbol</Link>,
                 <Link to="/productos/running" className="links">Running</Link>,
@@ -45,8 +54,9 @@ const Navbar = () => {
     };
 
     return (
+      <ThemeProvider theme={darkTheme}>
         <AppBar position="static">
-          <Container maxWidth="xl" className="appBar">
+          <Container maxWidth="xl">
             <Toolbar disableGutters>
               <img src={logoHeader} className="logoEdit"/>
               <Typography
@@ -168,6 +178,7 @@ const Navbar = () => {
             </Toolbar>
           </Container>
         </AppBar>
+      </ThemeProvider>
     )
 }
 
