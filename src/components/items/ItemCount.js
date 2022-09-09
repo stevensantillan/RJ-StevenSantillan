@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { useState } from 'react';
+import { Link } from "react-router-dom";
 
-const ItemCount = ({producto}) => {
-
-    const [initial, setInitial ] = useState(1)
-    const [AddToCart, setAddCart] = useState(true)
-
+const ItemCount = ({max, initial, setInitial, handleAddToCart}) => {
 
     const handleOnAdd = () => {
-        if(initial < producto.stock){
+        if(initial < max){
             setInitial( initial + 1 )
         }
       
@@ -21,16 +17,6 @@ const ItemCount = ({producto}) => {
             setInitial( initial - 1 )
         }
     }
-
-    const handleAddToCart = () => {
-        setAddCart(!AddToCart)
-    }
-
-    useEffect (
-        () => {
-            console.log('Se han añadido ' + initial + ' al carrito')
-        }, [AddToCart]
-    )
 
   return (
 
@@ -61,14 +47,18 @@ const ItemCount = ({producto}) => {
                     height: 40 }}>
                     +
         </Button>
-        <Button 
+
+        <Link to="/item/:itemId/cart" className="links">
+            <Button 
             onClick={handleAddToCart}
             variant="contained" 
             color="success" 
             sx={{   ml: 5, 
                     height: 40 }}>
                         Add to Cart
-        </Button>
+            </Button>
+        </Link>
+
     </Box>
 
   )

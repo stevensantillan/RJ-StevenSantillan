@@ -58,7 +58,7 @@ const Navbar = () => {
         <AppBar position="static">
           <Container maxWidth="xl">
             <Toolbar disableGutters>
-              <img src={logoHeader} className="logoEdit"/>
+              <img src={logoHeader} alt="example" className="logoEdit"/>
               <Typography
                 variant="h6"
                 noWrap
