@@ -31,7 +31,7 @@ const ItemDetailUnit = ({producto}) => {
       id: producto.id,
       nombre: producto.nameProd,
       precio: producto.price,
-      cantidad: producto.stock 
+      cantidad: cantidad
     }
 
     console.log(itemToCart)
