@@ -10,7 +10,8 @@ import ItemCardPays from './ItemCardPays';
 import Grid from '@mui/material/Grid';
 import ItemImg from './ItemImg';
 import ItemCount from '../ItemCount';
-import { useState } from 'react';
+import { useState,  useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 const bull = (
     <Box
@@ -24,6 +25,9 @@ const bull = (
 
 const ItemDetailUnit = ({producto}) => {
 
+  const {cart, addToCart, isInCart} = useContext(CartContext)
+  console.log(cart)
+
   const [cantidad, setCantidad ] = useState(1)
 
   const handleAddToCart = () => {
@@ -34,7 +38,7 @@ const ItemDetailUnit = ({producto}) => {
       cantidad: cantidad
     }
 
-    console.log(itemToCart)
+    addToCart(itemToCart)
   }
 
 return (
@@ -46,8 +50,8 @@ return (
 
     <Grid item xs={8}>
     <Card sx={{ width: "auto", 
-                            height: 800, 
-                            m:2 }}>
+                height: 800, 
+                m:2 }}>
       <CardContent>
         
         <Typography color="text.secondary" sx={{ml: 2, fontSize: 10}}>
@@ -98,11 +102,25 @@ return (
 
         <CardActions>
 
-            <ItemCount 
+            {
+              isInCart(producto.id) 
+              ?  
+              <Typography 
+                variant="h6" 
+                component="span" 
+                sx={{mt:4, ml:2, fontSize: 16}}>
+    
+                    {bull}El producto ya se encuentra en el carrito
+              </Typography>
+              :
+              <ItemCount 
               max={producto.stock}
               initial={cantidad}
               setInitial={setCantidad}
               handleAddToCart= {handleAddToCart}  />
+            }
+
+            
 
         </CardActions>
 

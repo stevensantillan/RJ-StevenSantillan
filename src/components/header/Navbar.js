@@ -144,7 +144,7 @@ const Navbar = () => {
                 ))}
               </Box>
 
-              <CartWidget/>
+              <Link to="/cart" style={{textDecoration: "none"}}><CartWidget/></Link>
 
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">

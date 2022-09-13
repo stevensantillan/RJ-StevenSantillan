@@ -1,7 +1,6 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { Link } from "react-router-dom";
 
 const ItemCount = ({max, initial, setInitial, handleAddToCart}) => {
 
@@ -48,16 +47,15 @@ const ItemCount = ({max, initial, setInitial, handleAddToCart}) => {
                     +
         </Button>
 
-        <Link to="/item/:itemId/cart" className="links">
-            <Button 
+        <Button 
             onClick={handleAddToCart}
             variant="contained" 
             color="success" 
             sx={{   ml: 5, 
                     height: 40 }}>
                         Add to Cart
-            </Button>
-        </Link>
+        </Button>
+        
 
     </Box>
 
