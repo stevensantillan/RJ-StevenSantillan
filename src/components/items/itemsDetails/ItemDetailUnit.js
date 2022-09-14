@@ -45,7 +45,7 @@ return (
     <>
 
     <Grid item xs={8}>
-        <ItemImg img={producto.img}/>            
+        <ItemImg img={producto.img} producto={producto.nameProd}/>            
     </Grid>
 
     <Grid item xs={8}>
@@ -60,8 +60,8 @@ return (
 
         <Typography 
           gutterBottom 
-          variant="h4" 
-          component="span"
+          variant="h2" 
+          component="div"
           textAlign="center"
           sx={{mt: 3}}>
 
@@ -70,29 +70,29 @@ return (
         </Typography>
 
           <Typography 
-            variant="body2" 
+            component="div" 
             color="text.secondary"
             textAlign="center"
             sx={{mt:3, fontSize: 16}}>
 
                 {producto.detail}
+          
+          </Typography>
 
           <Typography 
-            variant="h2" 
-            component="span" 
+            component="div" 
             color="text.primary" 
-            sx={{mt:4, ml:2, fontSize: 50}}>
+            sx={{mt:3, ml:2, fontSize: 50, textAlign: "center"}}>
 
                 ${producto.price}
 
           </Typography>
 
-        </Typography>
+        
 
         <Typography 
-          variant="h6" 
-          component="span" 
-          sx={{mt:4, ml:2, fontSize: 16}}>
+          component="div" 
+          sx={{mt:3, ml:2, fontSize: 16}}>
 
                 {bull}Stock disponible: {producto.stock}
 

@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import Swal from 'sweetalert2'
 
 
 export const CartContext = createContext()
@@ -30,7 +31,22 @@ export const CartProvider = ({children}) => {
     }
 
     const deleteCart = () => {
-        SetCart([])
+        
+        if (totalCart() !== 0){
+            Swal.fire({
+                title: 'Atención',
+                text: "Esta seguro de eliminar todos los elementos del carrito?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    SetCart([])
+                }
+            })
+        }        
     }
 
 
@@ -38,7 +54,7 @@ export const CartProvider = ({children}) => {
         localStorage.setItem("carrito", JSON.stringify(cart))
     }, [cart])
 
-    
+
     return (
         <CartContext.Provider value={
             {

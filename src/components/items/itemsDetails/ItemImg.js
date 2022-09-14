@@ -4,9 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 
-const ItemImg = ({img}) => {
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+const ItemImg = ({img, producto}) => {
   return (
     <Card sx={{ maxWidth: "auto", height: "800", ml:2 }}>
         <CardMedia
@@ -20,11 +24,12 @@ const ItemImg = ({img}) => {
                       variant="h5" 
                       component="span"
                       textAlign="center">
-                          Example
-                          <IconButton color="primary" 
+                          {producto}
+                          <IconButton 
+                                      color="primary" 
                                       aria-label="add to shopping cart"
-                                      sx={{ml: 15}}>
-                                        <FavoriteBorderIcon />
+                                      sx={{ml: 5}}>
+                                        <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                           </IconButton>
           </Typography>
         </CardContent>

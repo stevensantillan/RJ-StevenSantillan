@@ -34,7 +34,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
                         color="error" 
                         sx={{   ml: 5, 
                                 height: 40 }}>
-                                    Delete Cart
+                                    Vaciar Carrito
                         </Button>
                     </StyledTableCell>
                     <StyledTableCell align="right">
@@ -43,7 +43,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
                             color="success" 
                             sx={{   ml: 5, 
                                     height: 40 }}>
-                                        Go to Checkout
+                                        Ir al Checkout
                         </Button>
                     </StyledTableCell>
                 </TableRow>
