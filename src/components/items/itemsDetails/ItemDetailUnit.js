@@ -10,8 +10,8 @@ import ItemCardPays from './ItemCardPays';
 import Grid from '@mui/material/Grid';
 import ItemImg from './ItemImg';
 import ItemCount from '../ItemCount';
-import { useState,  useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { useState } from 'react';
+import { useCartContext } from '../../context/CartContext';
 
 const bull = (
     <Box
@@ -25,7 +25,7 @@ const bull = (
 
 const ItemDetailUnit = ({producto}) => {
 
-  const {cart, addToCart, isInCart} = useContext(CartContext)
+  const {cart, addToCart, isInCart} = useCartContext()
   console.log(cart)
 
   const [cantidad, setCantidad ] = useState(1)
@@ -120,8 +120,6 @@ return (
               handleAddToCart= {handleAddToCart}  />
             }
 
-            
-
         </CardActions>
 
         <Stack  
@@ -133,7 +131,6 @@ return (
               defaultValue={3.5} 
               precision={0.5} 
               readOnly/>
-
         </Stack>
 
         <ItemCardPays/>       
