@@ -12,6 +12,7 @@ import ItemImg from './ItemImg';
 import ItemCount from '../ItemCount';
 import { useState } from 'react';
 import { useCartContext } from '../../context/CartContext';
+import Button from '@mui/material/Button';
 
 const bull = (
     <Box
@@ -104,20 +105,46 @@ return (
 
             {
               isInCart(producto.id) 
+              
               ?  
-              <Typography 
-                variant="h6" 
-                component="span" 
-                sx={{mt:4, ml:2, fontSize: 16}}>
+
+              <Box 
+                display="flex"
+                flexDirection= "column" 
+                justifyContent="center" 
+                sx={{ width: '100%'}}>
+
+                  <Typography 
+                    variant="h6" 
+                    component="span" 
+                    sx={{ mt:2, 
+                          ml:2, 
+                          fontSize: 16}}>
     
-                    {bull}El producto ya se encuentra en el carrito
-              </Typography>
+                      {bull}El producto ya se encuentra en el carrito.
+              
+                  </Typography>
+              
+                  <Button 
+                    variant="contained" 
+                    color="success" 
+                    sx={{ ml: 5,
+                          mt: 2, 
+                          height: 40 }}>
+                            
+                            Terminar mi Compra
+              
+                  </Button>
+
+              </Box>
+              
               :
+
               <ItemCount 
-              max={producto.stock}
-              initial={cantidad}
-              setInitial={setCantidad}
-              handleAddToCart= {handleAddToCart}  />
+                max={producto.stock}
+                initial={cantidad}
+                setInitial={setCantidad}
+                handleAddToCart= {handleAddToCart}  />
             }
 
         </CardActions>

@@ -43,7 +43,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
                             color="success" 
                             sx={{   ml: 5, 
                                     height: 40 }}>
-                                        Ir al Checkout
+                                        Terminar mi Compra
                         </Button>
                     </StyledTableCell>
                 </TableRow>
