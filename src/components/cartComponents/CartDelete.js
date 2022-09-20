@@ -8,6 +8,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from "react-router-dom";
+import "../header/navbar.scss"
 
 const CartDelete = () => {
 
@@ -38,6 +40,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
                         </Button>
                     </StyledTableCell>
                     <StyledTableCell align="right">
+                        <Link to="/checkout" className='links'>
                         <Button 
                             variant="contained" 
                             color="success" 
@@ -45,6 +48,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
                                     height: 40 }}>
                                         Terminar mi Compra
                         </Button>
+                        </Link>
                     </StyledTableCell>
                 </TableRow>
             </TableHead>

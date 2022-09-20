@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Perfil from './components/Perfil';
 import Cart from './components/cartComponents/Cart';
 import { CartProvider } from './components/context/CartContext';
+import Checkout from './components/checkout/Checkout';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
           <Route path='/perfil' element={<Perfil/>}/>
 
           <Route path='/cart' element={<Cart/>}/>
+
+          <Route path='/checkout' element={<Checkout/>}/>
 
 
           <Route path='*' element={<Navigate to={'/'}/>}/>

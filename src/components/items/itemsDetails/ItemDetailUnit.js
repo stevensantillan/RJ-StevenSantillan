@@ -13,6 +13,8 @@ import ItemCount from '../ItemCount';
 import { useState } from 'react';
 import { useCartContext } from '../../context/CartContext';
 import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
+import "../../header/navbar.scss"
 
 const bull = (
     <Box
@@ -125,16 +127,19 @@ return (
               
                   </Typography>
               
-                  <Button 
-                    variant="contained" 
-                    color="success" 
-                    sx={{ ml: 5,
-                          mt: 2, 
-                          height: 40 }}>
+                  <Link to={"/checkout"} className="links">
+                    <Button 
+                      variant="contained" 
+                      color="success" 
+                      sx={{ ml: 5,
+                            mt: 2, 
+                            height: 40 }}>
                             
-                            Terminar mi Compra
+                              Terminar mi Compra
               
-                  </Button>
+                    </Button>
+                  </Link>
+                  
 
               </Box>
               
