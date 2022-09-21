@@ -29,7 +29,7 @@ const darkTheme = createTheme({
 const pages = [ <Link to="/productos/futbol" className="links">Futbol</Link>,
                 <Link to="/productos/running" className="links">Running</Link>,
                 <Link to="/productos/urbanas" className="links">Urbanas</Link>];
-const settings = [<Link to="/perfil" className="links">Perfil</Link>, 
+const settings = [<Link to="/login" className="links">Login</Link>, 
                   'Logout'];
 
 const Navbar = () => {
