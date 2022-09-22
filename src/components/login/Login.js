@@ -57,8 +57,9 @@ const Login = () => {
           <TextField
                 sx={{m: 2}}
                 name="pass"
+                id="outlined-password-input"
                 label="Password"
-                type={"pass"}
+                type="password"
                 autoComplete="current-password"
                 value={values.pass}
                 onChange={handleImputChange}

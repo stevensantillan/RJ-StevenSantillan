@@ -28,8 +28,8 @@ const users = [
 
 export const LoginProvider = ({children}) => {
     const [user, setUser] = useState({
-        user: "123@hotmail.com",
-        logged: true,
+        user: "",
+        logged: false,
         error: ""
     })
 

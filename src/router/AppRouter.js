@@ -7,16 +7,16 @@ import { UseLoginContext } from '../components/context/LoginContext'
 
 const AppRouter = () => {
 
-  const {users} = UseLoginContext()  
+  const {user} = UseLoginContext()  
 
   return (
     <BrowserRouter>
             {
-            users.logged
+            user.logged
                 ? <PrivateRoutes/>
                 : <PublicRoutes/>
             }
-        </BrowserRouter>
+    </BrowserRouter>
   )
 }
 

@@ -1,18 +1,19 @@
 import './App.css';
-import { BrowserRouter } from "react-router-dom"
 import { CartProvider } from './components/context/CartContext';
 import AppRouter from './router/AppRouter';
+import { LoginProvider } from './components/context/LoginContext';
 
 
 function App() {
   return (
     
     <>
-    <CartProvider>
-      <BrowserRouter>
-        <AppRouter/>
-      </BrowserRouter>
-    </CartProvider>
+    <LoginProvider>
+      <CartProvider>
+          <AppRouter/>
+      </CartProvider>
+    </LoginProvider>
+    
     </> 
 
   );
