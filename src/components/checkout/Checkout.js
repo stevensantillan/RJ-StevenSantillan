@@ -8,69 +8,98 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { FormControl } from '@mui/material';
+import { useCartContext } from '../context/CartContext'
+import { Navigate } from 'react-router-dom';
 
 const primary = grey[100]; 
 
 const Checkout = () => {
 
-    const [pago, setPago] = useState('');
+    const { cart, totalCart  } = useCartContext()
 
-    const handleChange = (event) => {
-        setPago(event.target.value);
-        console.log(event.target.value);
-    };
+    const [values, setValues] = useState({
+        nombre: "",
+        apellido: "",
+        email: "",
+        direccion: "",
+        codPostal: "",
+        metodoPago: "",
+        numTarjeta: ""
+    })
+
+    const handleImputChange = (e) => {
+        setValues({
+            ...values,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const orden = {
+            comprador: values,
+            items: cart,
+            total: totalCart()
+        }
+
+        console.log(orden)
+    }
+
+    if (cart.length === 0){
+        return <Navigate to={"/"}/>
+    }
 
   return (
     <>
     <Container maxWidth="false">
         <Box
+            onSubmit={handleSubmit}
             component="form"
             sx={{ '& .MuiTextField-root': { m: 2, width: '25ch' }, mt: 2, bgcolor: primary, opacity: .9}}
             noValidate
-            autoComplete="off"
-        >
+            autoComplete="off">
+            
             <div>
                 <TextField
                 required
-                id="outlined-required0"
+                onChange={handleImputChange}
+                value={values.nombre}
+                name="nombre"
                 label="Nombre"
-                defaultValue=""
                 />
 
                 <TextField
                 required
-                id="outlined-required1"
+                onChange={handleImputChange}
+                value={values.apellido}
+                name="apellido"
                 label="Apellido"
-                defaultValue=""
-                />
-
-                <TextField
-                id="outlined-password-input"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
                 />
             </div>
 
             <div>
                 <TextField
                 required
-                id="outlined-required2"
+                onChange={handleImputChange}
+                value={values.email}
+                name="email"
                 label="E-mail"
-                defaultValue=""
                 />
             </div>
 
             <div>
                 <TextField
                 required
-                id="outlined-required3"
-                label="Dirección"
-                defaultValue=""
-                />
+                onChange={handleImputChange}
+                value={values.direccion}
+                name="direccion"
+                label="Dirección"/>
 
                 <TextField
-                id="standard-number"
+                onChange={handleImputChange}
+                value={values.cp}
+                name="codPostal"
                 label="Código Postal"
                 type="number"
                 InputLabelProps={{
@@ -83,11 +112,11 @@ const Checkout = () => {
                 <FormControl sx={{width: 300, mt: 2, mb: 2}}>
                     <InputLabel id="select-label" sx={{ml: 2}}> Método de Pago </InputLabel>
                         <Select
+                            onChange={handleImputChange}
+                            value={values.metodoPago}
                             labelId="select-label"
-                            id="select"
-                            value={pago}
+                            name="metodoPago"
                             label="Método de Pago"
-                            onChange={handleChange} 
                             sx={{ml:2}}>
 
                                 <MenuItem value={"efectivo"}>Efectivo</MenuItem>
@@ -100,27 +129,31 @@ const Checkout = () => {
             </div>
            
             {
-                pago === "credito"   
+                values.metodoPago === "credito"   
                 ? 
                 <div>
                     <TextField
                     required
-                    id="numCredito"
-                    label="NÚmero de Tarjeta"
-                    defaultValue=""/>
+                    onChange={handleImputChange}
+                    value={values.numTarjeta}
+                    name='numTarjeta'
+                    label="NÚmero de Tarjeta"/>
                 </div>
-                : <h1>error</h1> 
+                : ""
             }    
             
-            <Button variant="contained" 
-                    color="success" 
-                    sx={{m: 2, height: "50px"}}>
+            <Button 
+                variant="contained"
+                type='submit' 
+                color="success" 
+                sx={{m: 2, height: "50px"}}>
         
                 Finalizar Compra
       
             </Button>
 
         </Box>
+        
     </Container>
     </>
   )
