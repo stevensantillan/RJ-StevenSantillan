@@ -1,5 +1,4 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const LoginContext = createContext()
 
@@ -26,46 +25,53 @@ const users = [
     }
 ]
 
-export const LoginProvider = ({children}) => {
-    const [user, setUser] = useState({
-        user: "",
-        logged: false,
-        error: ""
-    })
+const init = JSON.parse(localStorage.getItem("inicio")) || {
+    user: "",
+    logged: false,
+    error: ""
+} 
+
+    export const LoginProvider = ({children}) => {
+        const [user, setUser] = useState(init)
 
 
-const login = (values) => { 
-    const match = users.find(users => users.user === values.user)
-    if (match) {
-        if (match.pass === values.pass){
-            setUser({
-                user: match.user,
-                logged: true,
-                error: ""
-            })
+    const login = (values) => { 
+        const match = users.find(users => users.user === values.user)
+        if (match) {
+            if (match.pass === values.pass){
+                setUser({
+                    user: match.user,
+                    logged: true,
+                    error: ""
+                })
+            } else {
+                setUser({
+                    user: "",
+                    logged: false,
+                    error: "Contraseña incorrecta"
+                })
+            }
         } else {
             setUser({
                 user: "",
                 logged: false,
-                error: "Contraseña incorrecta"
+                error: "El usuario no existe"
             })
         }
-    } else {
+    }
+
+    const logout = () => {
         setUser({
             user: "",
             logged: false,
-            error: "El usuario no existe"
+            error: ""
         })
     }
-}
 
-const logout = () => {
-    setUser({
-        user: "",
-        logged: false,
-        error: ""
-    })
-}
+    useEffect(() => {
+        localStorage.setItem("inicio", JSON.stringify(user))
+    }, [user])
+
 
 return (
     <LoginContext.Provider value={{user, login, logout}}>

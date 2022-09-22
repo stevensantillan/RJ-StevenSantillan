@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import "./navbar.scss"
 import logoHeader from "../../data/multi/logoalt.ico"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { UseLoginContext } from "../context/LoginContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -29,10 +30,11 @@ const darkTheme = createTheme({
 const pages = [ <Link to="/productos/futbol" className="links">Futbol</Link>,
                 <Link to="/productos/running" className="links">Running</Link>,
                 <Link to="/productos/urbanas" className="links">Urbanas</Link>];
-const settings = [<Link to="/login" className="links">Login</Link>, 
-                  'Logout'];
 
 const Navbar = () => {
+
+    const {user, logout} = UseLoginContext()
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
   
@@ -84,8 +86,11 @@ const Navbar = () => {
                   onClick={handleOpenNavMenu}
                   color="inherit"
                 >
+
                   <MenuIcon />
+
                 </IconButton>
+
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorElNav}
@@ -104,12 +109,25 @@ const Navbar = () => {
                     display: { xs: 'block', md: 'none' },
                   }}
                 >
-                  {pages.map((page, index) => (
-                    <MenuItem key={index} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
+
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">
+                        {
+                        user.user !== ""
+                        ? <span>{user.user}</span>
+                        : <Link to="/login" className="links">Login</Link> 
+                        } 
+                      </Typography>
                     </MenuItem>
-                  ))}
+
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">
+                        <a onClick={logout}>Logout</a>
+                      </Typography>
+                    </MenuItem>
+    
                 </Menu>
+
               </Box>
               
               <Typography
@@ -150,6 +168,7 @@ const Navbar = () => {
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                   </IconButton>
                 </Tooltip>
+                
                 <Menu
                   sx={{ mt: '45px' }}
                   id="menu-appbar"
@@ -166,12 +185,24 @@ const Navbar = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">
+                        {
+                        user.user !== ""
+                        ? <span>{user.user}</span>
+                        : <Link to="/login" className="links">Login</Link> 
+                        } 
+                      </Typography>
                     </MenuItem>
-                  ))}
+
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">
+                        <a onClick={logout}>Logout</a>
+                      </Typography>
+                    </MenuItem>
+
                 </Menu>
+
               </Box>
             </Toolbar>
           </Container>

@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { LoginContext } from '../context/LoginContext';
 import { UseForm } from '../../hooks/UseForm';
+import Alert from '@mui/material/Alert';
 
 const Login = () => {
 
@@ -36,28 +37,27 @@ const Login = () => {
       }}
     >
 
+    <form onSubmit={handleSubmit}>
+      
       <Paper 
           sx={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-evenly"}}>
-
-      <form onSubmit={handleSubmit}>
-                    
+            justifyContent: "space-evenly",
+            height: "100%"}}>
+       
           <TextField
                 required
                 sx={{m: 2}}
                 name="user"
                 type={"user"}
                 label="User"
-                defaultValue=""
                 value={values.user}
                 onChange={handleImputChange}/>
 
           <TextField
                 sx={{m: 2}}
                 name="pass"
-                id="outlined-password-input"
                 label="Password"
                 type="password"
                 autoComplete="current-password"
@@ -65,7 +65,11 @@ const Login = () => {
                 onChange={handleImputChange}
                 />
 
-          {user.error && <h6>{user.error}</h6>}
+          {
+          user.error !== ""
+          ? <Alert severity="error">{user.error && user.error}</Alert>
+          : ""
+          } 
 
           <Button
                 variant="contained" 
@@ -76,10 +80,10 @@ const Login = () => {
                 Ingresar
       
           </Button>
-
-      </form>
    
       </Paper>
+
+    </form>
 
     </Box>
   )
