@@ -49,6 +49,16 @@ export const CartProvider = ({children}) => {
         }        
     }
 
+    const finishShop = (id) => {
+        Swal.fire({
+            title: 'Compra finalizada con éxito!',
+            text: `Tu número de orden es ${id}`,
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Continuar.'
+          })
+    }
+
 
     useEffect(() => {
         localStorage.setItem("carrito", JSON.stringify(cart))
@@ -64,7 +74,8 @@ export const CartProvider = ({children}) => {
                 cartQuantity,
                 totalCart,
                 deleteCart,
-                removeItem
+                removeItem,
+                finishShop
             }
         }>
             {children}

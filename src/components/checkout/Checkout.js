@@ -10,12 +10,15 @@ import MenuItem from '@mui/material/MenuItem';
 import { FormControl } from '@mui/material';
 import { useCartContext } from '../context/CartContext'
 import { Navigate } from 'react-router-dom';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+
 
 const primary = grey[100]; 
 
 const Checkout = () => {
 
-    const { cart, totalCart  } = useCartContext()
+    const { cart, totalCart, finishShop  } = useCartContext()
 
     const [values, setValues] = useState({
         nombre: "",
@@ -43,7 +46,12 @@ const Checkout = () => {
             total: totalCart()
         }
 
-        console.log(orden)
+        const ordenesRef = collection(db, "ordenes")
+        addDoc(ordenesRef, orden)
+            .then((doc) =>{
+                console.log(doc.id)
+                finishShop(doc.id)
+            })
     }
 
     if (cart.length === 0){
