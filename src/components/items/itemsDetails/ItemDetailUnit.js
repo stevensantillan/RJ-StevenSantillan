@@ -57,8 +57,8 @@ return (
                 m:2 }}>
       <CardContent>
         
-        <Typography color="text.secondary" sx={{ml: 2, fontSize: 10}}>
-                Nuevo | 10 vendidos
+        <Typography color="text.secondary" sx={{ml: 2, fontSize: 15}}>
+                Nuevo
         </Typography>
 
         <Typography 
@@ -92,65 +92,82 @@ return (
           </Typography>
 
         
+        {
+          producto.stock === 0 
+          ? 
+          <Typography 
+          component="div"
+          color= "#d32f2f" 
+          sx={{mt:3, ml:2, fontSize: 16}}>
 
+                {bull}No hay stock disponible.
+
+        </Typography>
+        :
         <Typography 
           component="div" 
           sx={{mt:3, ml:2, fontSize: 16}}>
 
                 {bull}Stock disponible: {producto.stock}
 
-        </Typography>
+        </Typography> 
+        }
+        
 
       </CardContent>
 
         <CardActions>
 
+
             {
-              isInCart(producto.id) 
-              
-              ?  
-
-              <Box 
-                display="flex"
-                flexDirection= "column" 
-                justifyContent="center" 
-                sx={{ width: '100%'}}>
-
-                  <Typography 
-                    variant="h6" 
-                    component="span" 
-                    sx={{ mt:2, 
-                          ml:2, 
-                          fontSize: 16}}>
-    
-                      {bull}El producto ya se encuentra en el carrito.
-              
-                  </Typography>
-              
-                  <Link to={"/checkout"} className="links">
-                    <Button 
-                      variant="contained" 
-                      color="success" 
-                      sx={{ ml: 5,
-                            mt: 2, 
-                            height: 40 }}>
-                            
-                              Terminar mi Compra
-              
-                    </Button>
-                  </Link>
-                  
-
-              </Box>
-              
+              producto.stock !== 0
+              ?
+                isInCart(producto.id) 
+                ?  
+                <Box 
+                  display="flex"
+                  flexDirection= "column" 
+                  justifyContent="center" 
+                  sx={{ width: '100%'}}>
+  
+                    <Typography 
+                      variant="h6" 
+                      component="span" 
+                      sx={{ mt:2, 
+                            ml:2, 
+                            fontSize: 16}}>
+      
+                        {bull}El producto ya se encuentra en el carrito.
+                
+                    </Typography>
+                
+                    <Link to={"/cart"} className="links">
+                      <Button 
+                        variant="contained" 
+                        color="success" 
+                        sx={{ ml: 5,
+                              mt: 2, 
+                              height: 40 }}>
+                              
+                                Terminar mi Compra
+                
+                      </Button>
+                    </Link>
+                    
+  
+                </Box>
+                
+                :
+  
+                <ItemCount 
+                  max={producto.stock}
+                  initial={cantidad}
+                  setInitial={setCantidad}
+                  handleAddToCart= {handleAddToCart}/>
               :
-
-              <ItemCount 
-                max={producto.stock}
-                initial={cantidad}
-                setInitial={setCantidad}
-                handleAddToCart= {handleAddToCart}  />
+              ""
             }
+            
 
         </CardActions>
 

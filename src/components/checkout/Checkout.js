@@ -10,8 +10,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { FormControl } from '@mui/material';
 import { useCartContext } from '../context/CartContext'
 import { Navigate } from 'react-router-dom';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs, writeBatch, query, where, documentId } from 'firebase/firestore';
 import { db } from '../../firebase/config';
+import Swal from 'sweetalert2';
 
 
 const primary = grey[100]; 
@@ -37,7 +38,7 @@ const Checkout = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const orden = {
@@ -46,12 +47,49 @@ const Checkout = () => {
             total: totalCart()
         }
 
+        const batch = writeBatch(db)
         const ordenesRef = collection(db, "ordenes")
-        addDoc(ordenesRef, orden)
-            .then((doc) =>{
-                console.log(doc.id)
-                finishShop(doc.id)
-            })
+        const productsRef = collection(db, "productos")
+
+        const q = query(productsRef, where(documentId(), "in", cart.map(item => item.id)))
+        
+        const productos = await getDocs(q)
+
+        const outOfStock = []
+
+        productos.docs.forEach((doc) =>{
+            const itemInCart = cart.find(item => item.id === doc.id)
+
+            if (doc.data().stock >= itemInCart.cantidad) {
+                batch.update(doc.ref, {
+                    stock: doc.data().stock - itemInCart.cantidad
+                })
+            } else {
+                outOfStock.push(itemInCart)
+            }
+
+        })
+
+        if(outOfStock.length === 0){
+            batch.commit()
+                .then(() => {
+                    addDoc (ordenesRef, orden)
+                        .then((doc) => {
+                            console.log(doc.id)
+                            finishShop(doc.id)
+                        })
+                })
+        } else {
+            console.log(outOfStock)
+            Swal.fire({
+                title: 'No hay stock del producto',
+                text: `El producto ${outOfStock[0].nombre} no tiene stock dispoible. Por favor reemplace este producto en su carrito.`,
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Continuar'
+              })   
+        }
+
     }
 
     if (cart.length === 0){

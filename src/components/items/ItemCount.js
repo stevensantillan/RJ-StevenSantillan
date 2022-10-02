@@ -53,7 +53,7 @@ const ItemCount = ({max, initial, setInitial, handleAddToCart}) => {
             color="success" 
             sx={{   ml: 5, 
                     height: 40 }}>
-                        Add to Cart
+                        Añadir al carrito
         </Button>
         
 

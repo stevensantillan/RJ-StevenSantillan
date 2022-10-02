@@ -55,8 +55,9 @@ export const CartProvider = ({children}) => {
             text: `Tu número de orden es ${id}`,
             icon: 'success',
             confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Continuar.'
+            confirmButtonText: 'Continuar'
           })
+          SetCart([])
     }
 
 
