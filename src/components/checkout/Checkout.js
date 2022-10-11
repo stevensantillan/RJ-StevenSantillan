@@ -38,7 +38,7 @@ const Checkout = () => {
             direccion: Yup.string()
             .required("El campo dirección es requerido")
             .min(3, "El campo dirección debe tener como mínimo 3 letras")
-            .max(15, "El campo dirección debe tener como máximo 15 letras"),
+            .max(30, "El campo dirección debe tener como máximo 30 letras"),
             codPostal: Yup.number()
             .required("El campo código postal es requerido")
             .test('len', 'El campo código postal debe tener 4 números', val => val.toString().length === 4)
