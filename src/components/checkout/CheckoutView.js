@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { FormControl } from '@mui/material';
+import { FormControl, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,7 +11,7 @@ import { grey } from '@mui/material/colors';
 
 const primary = grey[100]; 
 
-const CheckoutView = ( {values, handleImputChange, handleSubmit} ) => {
+const CheckoutView = ( {values, formik, handleImputChange, handleSubmit} ) => {
   return (
     <Container maxWidth="false">
     <Box
@@ -44,6 +44,7 @@ const CheckoutView = ( {values, handleImputChange, handleSubmit} ) => {
             required
             onChange={handleImputChange}
             value={values.email}
+            type="email"
             name="email"
             label="E-mail"
             />
@@ -57,7 +58,9 @@ const CheckoutView = ( {values, handleImputChange, handleSubmit} ) => {
             name="direccion"
             label="Dirección"/>
 
+
             <TextField
+            required
             onChange={handleImputChange}
             value={values.cp}
             name="codPostal"
@@ -68,11 +71,12 @@ const CheckoutView = ( {values, handleImputChange, handleSubmit} ) => {
             />
         </div>
 
-        <div>
-            
+
+        <div>      
             <FormControl sx={{width: 300, mt: 2, mb: 2}}>
                 <InputLabel id="select-label" sx={{ml: 2}}> Método de Pago </InputLabel>
                     <Select
+                        required
                         onChange={handleImputChange}
                         value={values.metodoPago}
                         labelId="select-label"
@@ -86,7 +90,6 @@ const CheckoutView = ( {values, handleImputChange, handleSubmit} ) => {
 
                 </Select>
             </FormControl>
-
         </div>
        
         {
@@ -97,11 +100,13 @@ const CheckoutView = ( {values, handleImputChange, handleSubmit} ) => {
                 required
                 onChange={handleImputChange}
                 value={values.numTarjeta}
+                type= 'number'
                 name='numTarjeta'
-                label="NÚmero de Tarjeta"/>
+                label="Número de Tarjeta"/>
             </div>
-            : ""
-        }    
+            : null     
+        }   
+ 
         
         <Button 
             variant="contained"
@@ -113,8 +118,18 @@ const CheckoutView = ( {values, handleImputChange, handleSubmit} ) => {
   
         </Button>
 
+        <Typography color="error" sx={{p: 4, fontSize: 16}}>
+            {formik.errors.nombre && <div>{formik.errors.nombre}</div>}
+            {formik.errors.apellido && <div>{formik.errors.apellido}</div>}
+            {formik.errors.email && <div>{formik.errors.email}</div>}
+            {formik.errors.direccion && <div>{formik.errors.direccion}</div>}
+            {formik.errors.codPostal && <div>{formik.errors.codPostal}</div>}
+            {formik.errors.metodoPago && <div>{formik.errors.metodoPago}</div>}
+            {formik.errors.numTarjeta && <div>{formik.errors.numTarjeta}</div>}
+        </Typography>
+
     </Box>
-    
+
 </Container>
   )
 }
