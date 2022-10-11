@@ -24,7 +24,6 @@ useEffect(() => {
   getDocs(q)
     .then((snapshot)=>{
       const productosDb = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
-      console.log(productosDb)
       setProductos(productosDb)
     })
     .finally(
@@ -32,7 +31,6 @@ useEffect(() => {
         setLoading(false)
     })
     
-
 },[category])
 
   return (

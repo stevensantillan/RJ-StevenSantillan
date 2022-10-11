@@ -1,18 +1,18 @@
 import './App.css';
 import { CartProvider } from './components/context/CartContext';
 import AppRouter from './router/AppRouter';
-import { LoginProvider } from './components/context/LoginContext';
+import { AuthContextProvider } from './components/context/AuthContext';
 
 
 function App() {
   return (
     
     <>
-    <LoginProvider>
+    <AuthContextProvider>
       <CartProvider>
           <AppRouter/>
       </CartProvider>
-    </LoginProvider>
+    </AuthContextProvider>
     
     </> 
 

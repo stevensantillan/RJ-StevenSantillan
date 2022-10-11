@@ -8,25 +8,24 @@ import { UserAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import './logStyle.scss';
 
-const Login = () => {
+const SingIn = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-
-  const { createUser } = UserAuth()
-
+  
+  const { signIn } = UserAuth()
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("")
     try {
-      await createUser(email, password)
+      await signIn(email, password)
     } catch (e) {
       setError(e.message)
     }
   }
-
-
+  
   return (
     <Box
       sx={{
@@ -78,16 +77,15 @@ const Login = () => {
           <Button
                 variant="contained" 
                 type='sumbit'
-                color="warning" 
+                color="success" 
                 sx={{m: 2, height: "50px"}}>
         
-                Crear Usuario
+                Ingresar
       
           </Button>
 
-          <Link to="/signIn" className='logStyle'>Volver atras</Link>
-          
-   
+          <Link to="/login" className='logStyle'>Crear nuevo usuario</Link>
+
       </Paper>
 
     </form>
@@ -96,4 +94,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SingIn

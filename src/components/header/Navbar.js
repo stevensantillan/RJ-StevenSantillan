@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import "./navbar.scss"
 import logoHeader from "../../data/multi/logoalt.ico"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { UseLoginContext } from "../context/LoginContext";
+import { UserAuth } from "../context/AuthContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -33,7 +33,7 @@ const pages = [ <Link to="/productos/futbol" className="links">Futbol</Link>,
 
 const Navbar = () => {
 
-    const {user, logout} = UseLoginContext()
+    const {user, logout} = UserAuth()
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -113,9 +113,9 @@ const Navbar = () => {
                     <MenuItem onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">
                         {
-                        user.user !== ""
-                        ? <span>{user.user}</span>
-                        : <Link to="/login" className="links">Login</Link> 
+                        user.email !== ""
+                        ? <span>{user.email}</span>
+                        : <Link to="/signIn" className="links">Cerrar Sesión</Link> 
                         } 
                       </Typography>
                     </MenuItem>
@@ -188,8 +188,8 @@ const Navbar = () => {
                   <MenuItem onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">
                         {
-                        user.user !== ""
-                        ? <span>{user.user}</span>
+                        user.email !== ""
+                        ? <span>{user.email}</span>
                         : <Link to="/login" className="links">Login</Link> 
                         } 
                       </Typography>

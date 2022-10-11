@@ -94,12 +94,10 @@ const Checkout = () => {
                     .then(() => {
                         addDoc (ordenesRef, orden)
                             .then((doc) => {
-                                console.log(doc.id)
                                 finishShop(doc.id)
                             })
                     })
             } else {
-                console.log(outOfStock)
                 Swal.fire({
                     title: 'No hay stock del producto',
                     text: `El producto ${outOfStock[0].nombre} no tiene stock dispoible. Por favor reemplace este producto en su carrito.`,
